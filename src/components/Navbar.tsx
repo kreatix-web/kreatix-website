@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -10,29 +10,32 @@ export default function Navbar() {
       setScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out ${
         scrolled
-          ? 'bg-black/95 backdrop-blur-md border-b border-white/10'
-          : 'bg-transparent'
+          ? "bg-black/95 backdrop-blur-md border-b border-white/10"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-[1800px] mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20 lg:h-24">
           <a
             href="#"
-            className="text-xl lg:text-2xl font-semibold tracking-tight hover:text-[#00E5CC] transition-colors duration-500"
+            className="relative text-3xl lg:text-4xl font-extrabold tracking-tight hover:scale-105 transition-all duration-500 group"
           >
-            Kreatix
+            <span className="text-white font-black italic drop-shadow-[0_2px_10px_rgba(0,229,204,0.3)]">
+              Kreatix
+            </span>
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#00E5CC] to-[#FF6B9D] group-hover:w-full transition-all duration-500"></span>
           </a>
 
           <div className="hidden md:flex items-center gap-12">
-            {['Work', 'About', 'Services', 'Contact'].map((item) => (
+            {["Work", "About", "Services", "Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -56,7 +59,7 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-black/98 backdrop-blur-lg border-t border-white/10 animate-fade-in-up">
           <div className="px-6 py-8 space-y-6">
-            {['Work', 'About', 'Services', 'Contact'].map((item) => (
+            {["Work", "About", "Services", "Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
