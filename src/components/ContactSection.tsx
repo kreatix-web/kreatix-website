@@ -5,7 +5,11 @@ import { sql, type ContactSubmission } from "../lib/neon";
 
 export default function ContactSection() {
   const { ref, isVisible } = useScrollAnimation();
-  const [formData, setFormData] = useState({ name: "", email: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -19,16 +23,17 @@ export default function ContactSection() {
       const submission: ContactSubmission = {
         name: formData.name,
         email: formData.email,
+        message: formData.message,
       };
 
       // Insert contact submission using Neon
       await sql(
-        "INSERT INTO contact_submissions (name, email) VALUES ($1, $2)",
-        [submission.name, submission.email]
+        "INSERT INTO contact_submissions (name, email, message) VALUES ($1, $2, $3)",
+        [submission.name, submission.email, submission.message]
       );
 
       setSubmitted(true);
-      setFormData({ name: "", email: "" });
+      setFormData({ name: "", email: "", message: "" });
 
       setTimeout(() => setSubmitted(false), 3000);
     } catch (err) {
@@ -105,6 +110,26 @@ export default function ContactSection() {
                 required
                 className="w-full bg-transparent border-b border-white/20 py-4 text-lg focus:outline-none focus:border-[#00E5CC] transition-colors duration-500 placeholder:text-white/30"
                 placeholder="your@email.com"
+              />
+            </div>
+
+            <div className="group">
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-white/50 mb-3 group-focus-within:text-[#00E5CC] transition-colors duration-500"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
+                required
+                rows={5}
+                className="w-full bg-transparent border border-white/20 rounded-lg py-4 px-4 text-lg focus:outline-none focus:border-[#00E5CC] transition-colors duration-500 placeholder:text-white/30 resize-none"
+                placeholder="Tell us about your project..."
               />
             </div>
           </div>
