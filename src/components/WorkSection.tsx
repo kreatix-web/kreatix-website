@@ -29,7 +29,7 @@ export default function WorkSection() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="work" ref={ref} className="py-32 lg:py-48 px-6 bg-black">
+    <section id="work" ref={ref} className="py-16 lg:py-24 px-6 bg-black">
       <div className="max-w-[1600px] mx-auto">
         <div
           className={`mb-20 lg:mb-32 transition-all duration-1000 ease-out ${

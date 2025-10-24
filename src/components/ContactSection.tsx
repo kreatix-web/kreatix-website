@@ -45,7 +45,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" ref={ref} className="py-32 lg:py-48 px-6 bg-black">
+    <section id="contact" ref={ref} className="py-16 lg:py-24 px-6 bg-black">
       <div className="max-w-3xl mx-auto">
         <div
           className={`text-center mb-16 transition-all duration-1000 ease-out ${

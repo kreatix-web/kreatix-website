@@ -1,12 +1,15 @@
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden max-w-full">
       <div className="absolute inset-0 bg-gradient-to-br from-[#00E5CC] via-[#0A1628] to-black">
-        <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 opacity-30 overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00E5CC] rounded-full filter blur-[120px] animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#FF6B9D] rounded-full filter blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
+          <div
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#FF6B9D] rounded-full filter blur-[120px] animate-pulse"
+            style={{ animationDelay: "1s" }}
+          />
         </div>
       </div>
 
@@ -21,7 +24,10 @@ export default function Hero() {
               Experiences
             </span>
           </h1>
-          <p className="text-lg sm:text-xl lg:text-2xl text-white/60 font-light tracking-wide max-w-2xl mx-auto opacity-0 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+          <p
+            className="text-lg sm:text-xl lg:text-2xl text-white/60 font-light tracking-wide max-w-2xl mx-auto opacity-0 animate-fade-in-up"
+            style={{ animationDelay: "0.3s" }}
+          >
             Award-winning web agency building products that people love
           </p>
         </div>
@@ -29,15 +35,19 @@ export default function Hero() {
 
       <a
         href="#intro"
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 hover:text-white transition-all duration-700 group opacity-0 animate-fade-in-up"
-        style={{ animationDelay: '0.6s' }}
+        className="absolute bottom-12 left-0 right-0 mx-auto w-fit flex flex-col items-center justify-center gap-2 text-white/50 hover:text-white transition-all duration-700 group opacity-0 animate-fade-in-up"
+        style={{ animationDelay: "0.6s" }}
         aria-label="Scroll down"
       >
-        <span className="text-xs font-medium tracking-widest uppercase">Scroll</span>
-        <ChevronDown
-          size={24}
-          className="animate-bounce group-hover:translate-y-1 transition-transform duration-500"
-        />
+        <span className="text-xs font-medium tracking-widest uppercase text-center">
+          Scroll
+        </span>
+        <div className="flex items-center justify-center">
+          <ChevronDown
+            size={24}
+            className="animate-bounce group-hover:translate-y-1 transition-transform duration-500"
+          />
+        </div>
       </a>
     </section>
   );

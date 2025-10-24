@@ -1,11 +1,11 @@
-import { Twitter, Linkedin, Mail } from 'lucide-react';
+// import { Twitter, Linkedin, Mail } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function AboutSection() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="about" ref={ref} className="py-32 lg:py-48 px-6 bg-black">
+    <section id="about" ref={ref} className="py-16 lg:py-24 px-6 bg-black">
       <div className="max-w-[1400px] mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div
@@ -54,7 +54,7 @@ export default function AboutSection() {
               </div>
             </div>
 
-            <div className="flex gap-4 pt-4">
+            {/* <div className="flex gap-4 pt-4">
               <a
                 href="https://twitter.com"
                 target="_blank"
@@ -80,7 +80,7 @@ export default function AboutSection() {
               >
                 <Mail size={18} />
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
