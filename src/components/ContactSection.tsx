@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send } from "lucide-react";
+import { Send, CheckCircle2 } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import { sql, type ContactSubmission } from "../lib/neon";
 
@@ -13,6 +13,7 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showToast, setShowToast] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,9 +34,13 @@ export default function ContactSection() {
       );
 
       setSubmitted(true);
+      setShowToast(true);
       setFormData({ name: "", email: "", message: "" });
 
-      setTimeout(() => setSubmitted(false), 3000);
+      setTimeout(() => {
+        setSubmitted(false);
+        setShowToast(false);
+      }, 5000);
     } catch (err) {
       setError("Failed to send message. Please try again.");
       console.error("Submission error:", err);
@@ -45,7 +50,24 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" ref={ref} className="py-16 lg:py-24 px-6 bg-black">
+    <section
+      id="contact"
+      ref={ref}
+      className="py-16 lg:py-24 px-6 bg-black relative"
+    >
+      {/* Success Toast */}
+      {showToast && (
+        <div className="fixed top-6 left-0 right-0 mx-auto sm:left-auto sm:right-6 sm:mx-0 z-50 animate-fade-in-up w-[calc(100%-3rem)] sm:w-auto max-w-md px-6 sm:px-0">
+          <div className="bg-gradient-to-r from-[#00E5CC] to-[#00D4BB] text-black px-6 py-4 rounded-lg shadow-2xl flex items-center gap-3">
+            <CheckCircle2 size={24} className="flex-shrink-0" />
+            <div>
+              <p className="font-semibold">Message sent successfully!</p>
+              <p className="text-sm opacity-90">We'll get back to you soon.</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="max-w-3xl mx-auto">
         <div
           className={`text-center mb-16 transition-all duration-1000 ease-out ${
@@ -88,7 +110,7 @@ export default function ContactSection() {
                   setFormData({ ...formData, name: e.target.value })
                 }
                 required
-                className="w-full bg-transparent border-b border-white/20 py-4 text-lg focus:outline-none focus:border-[#00E5CC] transition-colors duration-500 placeholder:text-white/30"
+                className="w-full bg-transparent border border-white/20 rounded-lg py-4 px-4 text-lg focus:outline-none focus:border-[#00E5CC] transition-colors duration-500 placeholder:text-white/30"
                 placeholder="Your full name"
               />
             </div>
@@ -108,7 +130,7 @@ export default function ContactSection() {
                   setFormData({ ...formData, email: e.target.value })
                 }
                 required
-                className="w-full bg-transparent border-b border-white/20 py-4 text-lg focus:outline-none focus:border-[#00E5CC] transition-colors duration-500 placeholder:text-white/30"
+                className="w-full bg-transparent border border-white/20 rounded-lg py-4 px-4 text-lg focus:outline-none focus:border-[#00E5CC] transition-colors duration-500 placeholder:text-white/30"
                 placeholder="your@email.com"
               />
             </div>
