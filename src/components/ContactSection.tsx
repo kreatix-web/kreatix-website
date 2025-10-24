@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { Send } from 'lucide-react';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { supabase, type ContactSubmission } from '../lib/supabase';
+import { useState } from "react";
+import { Send } from "lucide-react";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { sql, type ContactSubmission } from "../lib/neon";
 
 export default function ContactSection() {
   const { ref, isVisible } = useScrollAnimation();
-  const [formData, setFormData] = useState({ name: '', email: '' });
+  const [formData, setFormData] = useState({ name: "", email: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -21,21 +21,19 @@ export default function ContactSection() {
         email: formData.email,
       };
 
-      const { error: submitError } = await supabase
-        .from('contact_submissions')
-        .insert([submission]);
-
-      if (submitError) {
-        throw submitError;
-      }
+      // Insert contact submission using Neon
+      await sql(
+        "INSERT INTO contact_submissions (name, email) VALUES ($1, $2)",
+        [submission.name, submission.email]
+      );
 
       setSubmitted(true);
-      setFormData({ name: '', email: '' });
+      setFormData({ name: "", email: "" });
 
       setTimeout(() => setSubmitted(false), 3000);
     } catch (err) {
-      setError('Failed to send message. Please try again.');
-      console.error('Submission error:', err);
+      setError("Failed to send message. Please try again.");
+      console.error("Submission error:", err);
     } finally {
       setIsSubmitting(false);
     }
@@ -46,9 +44,7 @@ export default function ContactSection() {
       <div className="max-w-3xl mx-auto">
         <div
           className={`text-center mb-16 transition-all duration-1000 ease-out ${
-            isVisible
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 translate-y-12'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
           <p className="text-sm font-medium tracking-widest uppercase text-[#00E5CC] mb-4">
@@ -67,11 +63,9 @@ export default function ContactSection() {
         <form
           onSubmit={handleSubmit}
           className={`space-y-6 transition-all duration-1000 ease-out ${
-            isVisible
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 translate-y-12'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
-          style={{ transitionDelay: '0.2s' }}
+          style={{ transitionDelay: "0.2s" }}
         >
           <div className="space-y-6">
             <div className="group">
@@ -126,9 +120,9 @@ export default function ContactSection() {
               className="group relative w-full sm:w-auto px-12 py-5 bg-[#00E5CC] hover:bg-[#00D4BB] text-black font-medium tracking-wide rounded-full transition-all duration-500 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-3"
             >
               {submitted ? (
-                'Message Sent!'
+                "Message Sent!"
               ) : isSubmitting ? (
-                'Sending...'
+                "Sending..."
               ) : (
                 <>
                   Send Message
