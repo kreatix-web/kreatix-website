@@ -26,12 +26,11 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20 lg:h-24">
           <a
             href="#"
-            className="relative text-3xl lg:text-4xl font-extrabold tracking-tight hover:scale-105 transition-all duration-500 group"
+            className="text-3xl lg:text-4xl font-extrabold tracking-tight hover:scale-105 transition-all duration-500"
           >
             <span className="text-white font-black italic drop-shadow-[0_2px_10px_rgba(0,229,204,0.3)]">
               Kreatix
             </span>
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#00E5CC] to-[#FF6B9D] group-hover:w-full transition-all duration-500"></span>
           </a>
 
           <div className="hidden md:flex items-center gap-12">
