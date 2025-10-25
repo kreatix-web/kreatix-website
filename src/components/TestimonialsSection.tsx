@@ -79,7 +79,6 @@ export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  const visibleCards = 3;
   const totalCards = testimonials.length;
 
   // Auto-play carousel
@@ -91,7 +90,7 @@ export default function TestimonialsSection() {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, totalCards]);
 
   const goToNext = () => {
     setIsAutoPlaying(false);
@@ -111,7 +110,7 @@ export default function TestimonialsSection() {
   return (
     <section
       ref={ref}
-      className="py-24 lg:py-32 px-6 bg-gradient-to-b from-black via-[#0A1628] to-black relative overflow-hidden"
+      className="py-16 lg:py-324 px-6 bg-gradient-to-b from-black via-[#0A1628] to-black relative overflow-hidden"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
@@ -141,10 +140,16 @@ export default function TestimonialsSection() {
         <div className="relative overflow-hidden">
           {/* Cards Track */}
           <div
-            className="flex gap-6 mb-8 px-1"
-            style={{
-              transform: `translateX(-${currentIndex * (100 / visibleCards)}%)`,
-            }}
+            className={`flex gap-6 mb-8 px-1 transform will-change-transform ${
+              [
+                "translate-x-0",
+                "-translate-x-[33.333%]",
+                "-translate-x-[66.666%]",
+                "-translate-x-[100%]",
+                "-translate-x-[133.333%]",
+                "-translate-x-[166.666%]",
+              ][currentIndex]
+            }`}
           >
             {testimonials.map((testimonial) => (
               <div

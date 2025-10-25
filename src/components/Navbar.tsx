@@ -35,7 +35,7 @@ export default function Navbar() {
           </a>
 
           <div className="hidden md:flex items-center gap-12">
-            {["Work", "About", "Services", "Contact"].map((item) => (
+            {["Services", "About", "Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -59,7 +59,7 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-black/98 backdrop-blur-lg border-t border-white/10 animate-fade-in-up">
           <div className="px-6 py-8 space-y-6">
-            {["Work", "About", "Services", "Contact"].map((item) => (
+            {["Services", "About", "Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}

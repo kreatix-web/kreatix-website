@@ -7,7 +7,7 @@ export default function IntroSection() {
     <section
       id="intro"
       ref={ref}
-      className="py-32 lg:py-48 px-6 bg-black"
+      className="py-16 lg:py-24 px-6 bg-black"
     >
       <div className="max-w-5xl mx-auto">
         <h2
