@@ -1,4 +1,12 @@
-import { Zap, Layers, ShoppingCart, Check } from "lucide-react";
+import {
+  Zap,
+  Layers,
+  ShoppingCart,
+  Check,
+  ShieldCheck,
+  Rocket,
+  Crown,
+} from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 type Offering = {
@@ -148,30 +156,123 @@ export default function WorkSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          <div className="rounded-xl border border-white/10 bg-gradient-to-br from-[#0A1628]/70 to-white/[0.05] p-6 lg:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-            <div>
-              <h4 className="text-xl font-semibold">Support & Hosting Plans</h4>
-              <p className="text-white/60 mt-1">
-                We offer multiple support/hosting plans for every need.
-              </p>
+          <div className="rounded-xl border border-white/10 bg-gradient-to-br from-[#0A1628]/70 to-white/[0.06] p-6 lg:p-8">
+            <div className="mb-6 flex items-start justify-between gap-4">
+              <div>
+                <h4 className="text-xl font-semibold">
+                  Support & Hosting Plans
+                </h4>
+                <p className="text-white/60 mt-1">
+                  Choose a plan that fits your pace—from essentials to growth
+                  and pro-level care.
+                </p>
+              </div>
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-[#00E5CC]/10 text-[#00E5CC] border border-[#00E5CC]/30 hover:bg-[#00E5CC]/20 transition-colors duration-300 shrink-0"
+              >
+                Talk to us
+              </a>
             </div>
-            <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-white/70">
-                Essential
-              </span>
-              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-white/70">
-                Growth
-              </span>
-              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-white/70">
-                Pro
-              </span>
+
+            <div className="grid gap-4 md:grid-cols-3">
+              {/* Essential */}
+              <div className="group rounded-lg border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] transition-all p-5">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-[#00E5CC]/10 border border-[#00E5CC]/20 flex items-center justify-center text-[#00E5CC]">
+                    <ShieldCheck size={18} />
+                  </div>
+                  <div>
+                    <h5 className="font-semibold">Essential</h5>
+                    <p className="text-xs text-white/60">
+                      Care + secure hosting
+                    </p>
+                  </div>
+                </div>
+                <ul className="space-y-2 text-sm text-white/80">
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-0.5 text-[#00E5CC]" />{" "}
+                    Managed hosting
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-0.5 text-[#00E5CC]" /> Free
+                    SSL & CDN
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-0.5 text-[#00E5CC]" /> Weekly
+                    backups
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-0.5 text-[#00E5CC]" /> Email
+                    support
+                  </li>
+                </ul>
+              </div>
+
+              {/* Growth */}
+              <div className="group rounded-lg border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] transition-all p-5">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-[#FF6B9D]/10 border border-[#FF6B9D]/20 flex items-center justify-center text-[#FF6B9D]">
+                    <Rocket size={18} />
+                  </div>
+                  <div>
+                    <h5 className="font-semibold">Growth</h5>
+                    <p className="text-xs text-white/60">
+                      Faster support & staging
+                    </p>
+                  </div>
+                </div>
+                <ul className="space-y-2 text-sm text-white/80">
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-0.5 text-[#00E5CC]" />{" "}
+                    Priority support
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-0.5 text-[#00E5CC]" /> Uptime
+                    monitoring
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-0.5 text-[#00E5CC]" />{" "}
+                    Staging site
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-0.5 text-[#00E5CC]" />{" "}
+                    Monthly report
+                  </li>
+                </ul>
+              </div>
+
+              {/* Pro */}
+              <div className="group rounded-lg border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] transition-all p-5">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-[#00E5CC]/10 border border-[#00E5CC]/20 flex items-center justify-center text-[#00E5CC]">
+                    <Crown size={18} />
+                  </div>
+                  <div>
+                    <h5 className="font-semibold">Pro</h5>
+                    <p className="text-xs text-white/60">Performance + SLA</p>
+                  </div>
+                </div>
+                <ul className="space-y-2 text-sm text-white/80">
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-0.5 text-[#00E5CC]" /> 24/7
+                    SLA
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-0.5 text-[#00E5CC]" />{" "}
+                    Advanced caching/CDN
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-0.5 text-[#00E5CC]" />{" "}
+                    Headless CMS support
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check size={14} className="mt-0.5 text-[#00E5CC]" />{" "}
+                    Quarterly strategy call
+                  </li>
+                </ul>
+              </div>
             </div>
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-[#00E5CC]/10 text-[#00E5CC] border border-[#00E5CC]/30 hover:bg-[#00E5CC]/20 transition-colors duration-300"
-            >
-              Talk to us
-            </a>
           </div>
         </div>
       </div>
