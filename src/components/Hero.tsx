@@ -35,19 +35,17 @@ export default function Hero() {
 
       <a
         href="#intro"
-        className="absolute bottom-12 left-0 right-0 mx-auto w-fit flex flex-col items-center justify-center gap-2 text-white/50 hover:text-white transition-all duration-700 group opacity-0 animate-fade-in-up"
+        className="absolute bottom-12 left-0 right-0 mx-auto w-fit flex flex-col items-center gap-2 text-white/50 hover:text-white transition-all duration-700 group opacity-0 animate-fade-in-up"
         style={{ animationDelay: "0.6s" }}
         aria-label="Scroll down"
       >
-        <span className="text-xs font-medium tracking-widest uppercase text-center">
+        <span className="text-xs font-medium tracking-widest uppercase">
           Scroll
         </span>
-        <div className="flex items-center justify-center">
-          <ChevronDown
-            size={24}
-            className="animate-bounce group-hover:translate-y-1 transition-transform duration-500"
-          />
-        </div>
+        <ChevronDown
+          size={24}
+          className="animate-bounce group-hover:translate-y-1 transition-transform duration-500"
+        />
       </a>
     </section>
   );

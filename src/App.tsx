@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import IntroSection from "./components/IntroSection";
 import AboutSection from "./components/AboutSection";
 import WorkSection from "./components/WorkSection";
+import TestimonialsSection from "./components/TestimonialsSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import ContactCRM from "./components/ContactCRM";
@@ -16,6 +17,7 @@ function HomePage() {
       <IntroSection />
       <AboutSection />
       <WorkSection />
+      <TestimonialsSection />
       <ContactSection />
       <Footer />
     </div>
