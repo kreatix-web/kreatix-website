@@ -149,7 +149,7 @@ export default function TestimonialsSection() {
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial.id}
-                  className="flex-shrink-0 w-full md:w-[calc(50%-0.75rem-4px)] lg:w-[calc(33.333%-1rem-4px)]"
+                className="flex-shrink-0 w-full md:w-[calc(50%-0.75rem-4px)] lg:w-[calc(33.333%-1rem-4px)]"
               >
                 <div
                   className={`bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 rounded-xl p-6 backdrop-blur-sm hover:from-white/10 hover:to-white/5 transition-all duration-500 h-full ${
