@@ -53,6 +53,7 @@ const offerings: Offering[] = [
       "Product listing & detail pages",
       "Sorting & filters",
       "CMS‑managed content",
+      "Shopping cart & checkout",
       "Payment gateway integration",
     ],
     icon: <ShoppingCart className="text-[#00E5CC]" size={28} />,
