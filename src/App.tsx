@@ -8,7 +8,7 @@ import TestimonialsSection from "./components/TestimonialsSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import ContactCRM from "./components/ContactCRM";
-
+// Main App Component
 function HomePage() {
   return (
     <div className="bg-black text-white overflow-x-hidden">
