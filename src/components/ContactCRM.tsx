@@ -10,6 +10,7 @@ import {
   Search,
 } from "lucide-react";
 import { sql } from "../lib/neon";
+import { ensureSchema } from "../lib/migrate";
 
 type Contact = {
   id: number;
@@ -46,6 +47,8 @@ export default function ContactCRM() {
   const loadContacts = async () => {
     setLoading(true);
     try {
+      // Ensure schema exists before querying (idempotent)
+      await ensureSchema();
       const result = await sql(
         "SELECT id, name, email, message, created_at, converted, no_prospect FROM contact_submissions ORDER BY created_at DESC"
       );

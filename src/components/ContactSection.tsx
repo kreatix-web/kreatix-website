@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Send, CheckCircle2 } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import { sql, type ContactSubmission } from "../lib/neon";
+import { ensureSchema } from "../lib/migrate";
 
 export default function ContactSection() {
   const { ref, isVisible } = useScrollAnimation();
@@ -26,6 +27,9 @@ export default function ContactSection() {
         email: formData.email,
         message: formData.message,
       };
+
+      // Ensure database schema exists (idempotent)
+      await ensureSchema();
 
       // Insert contact submission using Neon
       await sql(
