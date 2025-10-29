@@ -8,6 +8,8 @@ import TestimonialsSection from "./components/TestimonialsSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import ContactCRM from "./components/ContactCRM";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import TermsOfService from "./components/TermsOfService";
 
 function HomePage() {
   return (
@@ -30,6 +32,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/admin/contacts" element={<ContactCRM />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsOfService />} />
       </Routes>
     </Router>
   );

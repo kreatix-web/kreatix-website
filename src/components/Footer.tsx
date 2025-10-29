@@ -1,4 +1,4 @@
-import { Twitter, Linkedin, Github, Instagram } from 'lucide-react';
+import { Twitter, Linkedin, Github, Instagram } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -102,10 +102,16 @@ export default function Footer() {
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/50">
           <p>© {currentYear} Kreatix. All rights reserved.</p>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-white transition-colors duration-500">
+            <a
+              href="/privacy"
+              className="hover:text-white transition-colors duration-500"
+            >
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-white transition-colors duration-500">
+            <a
+              href="/terms"
+              className="hover:text-white transition-colors duration-500"
+            >
               Terms of Service
             </a>
           </div>
